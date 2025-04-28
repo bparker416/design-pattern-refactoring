@@ -1,9 +1,6 @@
 # Snippet 1: Cart Component updated using MVC Pattern
-# Changed Singleton to MVC Pattern
-# Support multiple users/carts independently
 
 # Model
-# CartModel handles data
 class CartModel:
     def __init__(self):
         self.items = []
@@ -12,7 +9,6 @@ class CartModel:
         self.items.append((item, quantity))
 
 # View
-# CartView handles presentation
 class CartView:
     @staticmethod
     def display_cart(items):
@@ -20,7 +16,6 @@ class CartView:
             print(f"{quantity} of {item}(s) in cart.")
 
 # Controller
-# CartController handles operations
 class CartController:
     def __init__(self, model, view):
         self.model = model
@@ -32,9 +27,13 @@ class CartController:
     def show_cart(self):
         self.view.display_cart(self.model.items)
 
+# C4. Comments -
+# Changed Singleton to MVC Pattern
+# Support multiple users/carts independently
+# CartController handles data, CartView handles presentation, CartController handles operations
+
+
 # Snippet 2: Payment Component updated using Strategy Pattern
-# PaymentProcessor uses any PaymentStrategy dynamically without hardcoding
-# Easy to extend new payment methods without modifying existing code
 
 class PaymentStrategy:
     def process_payment(self, amount):
@@ -56,10 +55,13 @@ class PaymentProcessor:
     def pay(self, amount):
         self.strategy.process_payment(amount)
 
+# C4. Comments -
+# Replaced Factory Method with Strategy Pattern
+# PaymentProcessor uses any PaymentStrategy dynamically without hardcoding
+# Easy to extend new payment methods without modifying existing code
+
+
 # Snippet 3: Inventory Component updated using Repository Pattern
-# Simplified from Strategy to Repository Pattern
-# Repository handles inventory storage and operations
-# Easier to manage inventory updates directly
 
 class InventoryRepository:
     def __init__(self):
@@ -79,36 +81,7 @@ class InventoryRepository:
     def get_stock(self, item):
         return self.stock.get(item, 0)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# C4. Comments -
+# Simplified from Strategy to Repository Pattern
+# Repository handles inventory storage and operations
+# Easier to manage inventory updates directly
