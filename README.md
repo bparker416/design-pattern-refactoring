@@ -1,10 +1,10 @@
-<strong> **DO NOT DISTRIBUTE OR PUBLICLY POST SOLUTIONS TO THESE LABS. MAKE ALL FORKS OF THIS REPOSITORY WITH SOLUTION CODE PRIVATE. PLEASE REFER TO THE STUDENT CODE OF CONDUCT AND ETHICAL EXPECTATIONS FOR COLLEGE OF INFORMATION TECHNOLOGY STUDENTS FOR SPECIFICS. ** </strong>
+Test Case 1 curl cmd:
+curl -X PUT http://localhost:5002/inventory/Laptop `
+     -H "Content-Type: application/json" `
+     -d '{ "quantity": 5 }'
 
-# WESTERN GOVERNORS UNIVERSITY
+Test Case 2 curl cmd:
+curl -X GET http://localhost:5002/inventory/Laptop
 
-## D780 - SOFTWARE ARCHITECTURE AND DESIGN
-
-Welcome to D780 Software Architecture and Design!
-
-For specific task instructions and requirements for this assessment, please refer to the course page.
-
+Test Case 3 curl cmd:
+curl -X POST http://localhost:5000/checkout -H "Content-Type: application/json" -d '{ "item": "Laptop", "quantity": 2, "method": "credit_card", "amount": 2000 }'

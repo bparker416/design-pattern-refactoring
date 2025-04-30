@@ -10,7 +10,7 @@ def add_stock(item):
     stock[item] = stock.get(item, 0) + qty
     return jsonify({"message": f"{item} stock updates.", "stock": stock[item]}), 200
 
-@app.route("/inventory/<item", methods=["GET"])
+@app.route("/inventory/<item>", methods=["GET"])
 def get_stock(item):
     return jsonify({"item": item, "stock": stock.get(item, 0)}), 200
 

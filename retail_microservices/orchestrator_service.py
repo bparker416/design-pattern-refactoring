@@ -18,18 +18,18 @@ def add_to_inventory(item):
     r = requests.put(f"{INVENTORY_URL}/{item}", json={"quantity": qty})
     return jsonify(r.json()), r.status_code
 
-@app.route("add_to_cart", methods=["POST"])
+@app.route("/add_to_cart", methods=["POST"])
 def add_to_cart():
     body = request.get_json() # {item, quantity}
     # Reserve stock first
     res = requests.post(f"{INVENTORY_URL}/{body['item']}", json={"quantity": body["quantity"]})
     if res.status_code != 200:
-        return jsonify({"error": "Revervation failed."}), 409
+        return jsonify({"error": "Reservation failed."}), 409
     # Add to cart
     cart_res = requests.post(CART_URL, json=body)
     return jsonify(cart_res.json(), cart_res.status_code)
 
-app.route("/checkout", methods=["POST"])
+@app.route("/checkout", methods=["POST"])
 def checkout():
     body = request.get_json() # {amount, method}
     pay_res = requests.post(PAYMENT_URL, json=body)

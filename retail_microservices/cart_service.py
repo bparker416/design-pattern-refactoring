@@ -14,5 +14,5 @@ def add_item():
 def view_cart():
     return jsonify({"cart": cart})
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(port=5001, debug=True)
